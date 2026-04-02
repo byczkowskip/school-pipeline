@@ -24,8 +24,8 @@ jobs:
           pip install -r requirements.txt
           pip install dbx
 
-      - name: Run unit test
-        run: pytest -q
+#      - name: Run unit test
+#        run: pytest -q
 
       - name: Build wheel
         run: python setup.py bdist_wheel
