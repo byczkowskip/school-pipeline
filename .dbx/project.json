@@ -2,8 +2,8 @@
   "environments": {
     "dev": {
       "profile": "DEFAULT",
-      "workspace_dir": "/Shared/dbx/school-pipeline",
-      "artifact_location": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/dbx-artifacts/school-pipeline",
+      "workspace_dir": "/Shared/dbx/school-pipeline-dev",
+      "artifact_location": "dbfs:/Volumes/main/default/mlflow-artifacts/school-pipeline",
       "properties": {}
     }
   }
