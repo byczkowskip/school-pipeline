@@ -1,0 +1,7 @@
+{
+  "environments": {
+    "dev": {
+      "profile": "DEFAULT"
+    }
+  }
+}
