@@ -39,4 +39,4 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DBX_ENV: dev
         run: |
-          dbx deploy --jobs bronze_loader --env dev --no-rebuild
+          dbx deploy bronze_loader --no-rebuild
