@@ -5,6 +5,7 @@ artifacts:
   school_pipeline:
     type: whl
     build: python setup.py bdist_wheel
+    dynamic_version: true
 
 resources:
   jobs:
@@ -14,8 +15,10 @@ resources:
         - task_key: bronze
           python_wheel_task:
             package_name: school_pipeline
-            entry_point: bronze_loader
+            entry_point: bronze_loader.main
           existing_cluster_id: "0319-183230-ilr9d2uq"
+          libraries:
+            - whl: ./dist/*.whl
 
 targets:
   dev:

@@ -3,6 +3,7 @@ import os
 import re
 from pyspark.sql import SparkSession
 
+
 def load_config():
     env = os.getenv("DBX_ENV", "dev")
     with open(f"conf/{env}.json") as f:

@@ -1,6 +1,6 @@
 [project]
 name = "school_pipeline"
-version = "0.0.1"
+version = "0.1.1"
 authors = [{ name = "piotr@byczkowskipgmail.onmicrosoft.com" }]
 requires-python = ">=3.10,<3.13"
 dependencies = [
@@ -20,8 +20,14 @@ dev = [
     "ipykernel",
 ]
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"school_pipeline" = ["conf/*.json"]
+
 [project.scripts]
-main = "school_pipeline.main:main"
+main = "school_pipeline.bronze_loader:main"
 
 [build-system]
 requires = ["hatchling"]
