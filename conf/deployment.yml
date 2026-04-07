@@ -1,5 +1,9 @@
 environments:
   dev:
+    properties:
+      workspace_directory: /Shared/dbx/school-pipeline-dev-v3
+      artifact_location: dbfs:/tmp/dbx-artifacts
+
     workflows:
       - name: bronze_loader
         tasks:
