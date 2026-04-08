@@ -2,19 +2,16 @@ import json
 import os
 import re
 from pyspark.sql import SparkSession
+from importlib.resources import files
 
 
 def load_config():
     env = os.getenv("DBX_ENV", "dev")
-    with open(f"conf/{env}.json") as f:
+    config_path = files("school_pipeline.conf") / f"{env}.json"
+
+    with config_path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
-def detect_form(path: str) -> str:
-    if 'csv' in path:
-        return 'csv'
-    elif 'json' in path:
-        return 'json'
-    return 'parquet'
 
 def extract_table_name(path: str) -> str|None:
     match = re.search(r"school/([^/]+)", path)
@@ -23,8 +20,10 @@ def extract_table_name(path: str) -> str|None:
         return raw.split("-")[0]
     return None
 
-def load_stream(spark: SparkSession, input_path: str, base_checkpoint: str, base_schema: str, base_output: str):
-    fmt = detect_form(input_path)
+
+def load_stream(spark: SparkSession, src: str, base_checkpoint: str, base_schema: str, base_output: str):
+    input_path = src["path"]
+    fmt = src["format"]
     table_name = extract_table_name(input_path)
 
     checkpoint = f"{base_checkpoint}/{table_name}"
@@ -34,13 +33,14 @@ def load_stream(spark: SparkSession, input_path: str, base_checkpoint: str, base
     df = (
         spark.readStream
             .format("cloudFiles")
-            .option("cloudFileFormat", fmt)
+            .option("cloudFiles.format", fmt)
             .option("cloudFiles.schemaLocation", schema_loc)
             .option("cloudFiles.schemaEvolutionMode", "addNewColumns")
-            .option("inferSchema", "true")
             .load(input_path)
     )
 
+    print(f"Writing stream to {output}")
+    
     (
         df.writeStream
             .format("delta")
@@ -49,7 +49,10 @@ def load_stream(spark: SparkSession, input_path: str, base_checkpoint: str, base
             .start(output)
     )
 
-def main():
+
+def run():
+    print("Running bronze pipeline")
+
     spark = SparkSession.builder.getOrCreate()
     config = load_config()
 

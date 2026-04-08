@@ -4,18 +4,18 @@ bundle:
 artifacts:
   school_pipeline:
     type: whl
-    build: python setup.py bdist_wheel
+    build: python -m pip wheel . --no-deps --wheel-dir dist
     dynamic_version: true
 
 resources:
   jobs:
-    bronze_loader:
+    bronze_job:
       name: bronze_loader_${bundle.target}
       tasks:
         - task_key: bronze
           python_wheel_task:
             package_name: school_pipeline
-            entry_point: bronze_loader.main
+            entry_point: main
           existing_cluster_id: "0319-183230-ilr9d2uq"
           libraries:
             - whl: ./dist/*.whl

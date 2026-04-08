@@ -1,19 +1,55 @@
 {
   "sources": [
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-cdc/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-csv/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-csv-new/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-streaming/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-dlt-raw/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-dlt-streaming/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-json-raw/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-json-streaming/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-new/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/students-json/",
-    "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/students-json-new/"
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-cdc/",
+      "format": "json"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-csv/",
+      "format": "csv"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-csv-new/",
+      "format": "csv"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/courses-streaming/",
+      "format": "json"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments/",
+      "format": "parquet"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-dlt-raw/",
+      "format": "json"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-dlt-streaming/",
+      "format": "json"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-json-raw/",
+      "format": "json"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-json-streaming/",
+      "format": "json"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/enrollments-new/",
+      "format": "parquet"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/students-json/",
+      "format": "json"
+    },
+    {
+      "path": "abfss://bronze@databricksextstoragepb.dfs.core.windows.net/DE-Associate-Book/datasets/school/students-json-new/",
+      "format": "json"
+    }
   ],
-  "base_checkpoint": "/mnt/checkpoints/school/bronze",
-  "base_schema": "/mnt/checkpoints/school/bronze/schema",
-  "base_output": "/mnt/delta/school/bronze"
+  "base_checkpoint": "/Volumes/main/dev/checkpoints/school/bronze",
+  "base_schema": "/Volumes/main/dev/checkpoints/school/bronze/schema",
+  "base_output": "/Volumes/main/dev/delta/school/bronze"
 }

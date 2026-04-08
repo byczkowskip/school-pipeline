@@ -27,7 +27,7 @@ where = ["src"]
 "school_pipeline" = ["conf/*.json"]
 
 [project.scripts]
-main = "school_pipeline.bronze_loader:main"
+main = "school_pipeline.jobs.bronze:main"
 
 [build-system]
 requires = ["hatchling"]
